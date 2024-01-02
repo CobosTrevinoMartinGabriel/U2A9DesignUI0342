@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:renting_app/data/categories.dart';
 import 'package:renting_app/data/products.dart';
+import 'package:renting_app/pages/product_details_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -120,81 +121,90 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16),
                     itemBuilder: (context, index) {
                       final product = products[index];
-                      return SizedBox(
-                        width: 130,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // IMAGE
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              width: double.maxFinite,
-                              height: 130,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade100,
-                                borderRadius: BorderRadius.circular(20),
-                                image: DecorationImage(
-                                  image: AssetImage(product.image),
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProductDetailsPage(product: product),
+                              ));
+                        },
+                        child: SizedBox(
+                          width: 130,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // IMAGE
+                              Container(
+                                margin: const EdgeInsets.only(bottom: 10),
+                                width: double.maxFinite,
+                                height: 130,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade100,
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                    image: AssetImage(product.image),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      SizedBox(
+                                        width: 30,
+                                        height: 30,
+                                        child: IconButton.filledTonal(
+                                          onPressed: () {},
+                                          icon: const Icon(Icons.favorite),
+                                          padding: EdgeInsets.zero,
+                                          iconSize: 18,
+                                        ),
+                                      ),
+                                      const Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Icon(IconlyBold.star, size: 16, color: Colors.deepOrange),
+                                          SizedBox(width: 4),
+                                          Text("4.9")
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 5),
+                                child: Text(
+                                  product.name,
+                                  style: theme.textTheme.titleMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Text.rich(
+                                TextSpan(
                                   children: [
-                                    SizedBox(
-                                      width: 30,
-                                      height: 30,
-                                      child: IconButton.filledTonal(
-                                        onPressed: () {},
-                                        icon: const Icon(Icons.favorite),
-                                        padding: EdgeInsets.zero,
-                                        iconSize: 18,
-                                      ),
+                                    TextSpan(
+                                      style: theme.textTheme.bodySmall
+                                          ?.copyWith(fontWeight: FontWeight.bold),
+                                      text: "\$${product.price}0",
                                     ),
-                                    const Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(IconlyBold.star, size: 16, color: Colors.deepOrange),
-                                        SizedBox(width: 4),
-                                        Text("4.9")
-                                      ],
+                                    TextSpan(
+                                      style: theme.textTheme.bodySmall
+                                          ?.copyWith(color: Colors.grey.shade600),
+                                      text: " / hr",
                                     )
                                   ],
                                 ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 5),
-                              child: Text(
-                                product.name,
-                                style: theme.textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                    style: theme.textTheme.bodySmall
-                                        ?.copyWith(fontWeight: FontWeight.bold),
-                                    text: "\$${product.price}0",
-                                  ),
-                                  TextSpan(
-                                    style: theme.textTheme.bodySmall
-                                        ?.copyWith(color: Colors.grey.shade600),
-                                    text: " / hr",
-                                  )
-                                ],
-                              ),
-                            )
+                              )
 
-                            // PRICE
-                          ],
+                              // PRICE
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -205,6 +215,7 @@ class HomePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "Available Now",
@@ -223,8 +234,8 @@ class HomePage extends StatelessWidget {
                             Container(
                               width: 50,
                               height: 50,
-                              margin: EdgeInsets.only(right: 15),
-                              padding: EdgeInsets.all(8),
+                              margin: const EdgeInsets.only(right: 15),
+                              padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white,
@@ -245,9 +256,9 @@ class HomePage extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      Icon(IconlyBold.location, size: 16),
-                                      Text("4.0km"),
-                                      Padding(
+                                      const Icon(IconlyBold.location, size: 16),
+                                      const Text("4.0km"),
+                                      const Padding(
                                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                                         child: Text("\$5.00 /hr"),
                                       ),
@@ -264,7 +275,7 @@ class HomePage extends StatelessWidget {
                             ),
                             IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.favorite),
+                              icon: const Icon(Icons.favorite),
                             )
                           ],
                         ),
@@ -316,7 +327,7 @@ class HomePage extends StatelessWidget {
           elevation: 0,
           backgroundColor: theme.colorScheme.primary,
           foregroundColor: theme.colorScheme.onPrimary,
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
       ),
     );
