@@ -7,8 +7,9 @@ class Product {
 }
 
 List<Product> products = [
-  Product(name: "Google Pixel Tablet", image: "assets/tablet.png", price: 15),
-  Product(name: "Base Camp 4 Person Tent", image: "assets/tent.png", price: 15),
-  Product(name: "Utensils with stainless steel", image: "assets/utensils.png", price: 15),
-  Product(name: "Google Pixel Tablet", image: "assets/tablet.png", price: 15),
+  Product(
+      name: "Capcom Fighting collection", image: "assets/cfc.png", price: 83),
+  Product(name: "Devil May Cry 5", image: "assets/dmc5.png", price: 689.3),
+  Product(name: "Resident Evil 2", image: "assets/RE2.png", price: 866.51),
+  Product(name: "Ultra Street fighter", image: "assets/usf.png", price: 100),
 ];

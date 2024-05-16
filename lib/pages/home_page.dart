@@ -11,18 +11,19 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: const Color(0xff151617),
+      backgroundColor: const Color(0xffff9a00),
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: const Color(0xff151617),
+        backgroundColor: const Color(0xffff9a00),
         foregroundColor: Colors.white,
-        leading: IconButton(onPressed: () {}, icon: const Icon(IconlyLight.search)),
+        leading:
+            IconButton(onPressed: () {}, icon: const Icon(IconlyLight.search)),
         title: ActionChip(
-          label: const Text("New Jersey"),
+          label: const Text("Capcom"),
           shape: const StadiumBorder(),
-          backgroundColor: const Color(0xff272b30),
-          labelStyle: const TextStyle(color: Colors.white),
-          avatar: const Icon(IconlyLight.location, color: Colors.white),
+          backgroundColor: const Color(0xff264eff),
+          labelStyle: const TextStyle(color: Color(0xffeaac00)),
+          avatar: const Icon(IconlyLight.game, color: Color(0xffeaac00)),
           side: const BorderSide(width: 0),
           onPressed: () {},
         ),
@@ -47,8 +48,9 @@ class HomePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
-                    "Find the best to rent",
-                    style: theme.textTheme.headlineMedium?.copyWith(color: Colors.white),
+                    "Busca tu proximo juego favorito",
+                    style: theme.textTheme.headlineMedium
+                        ?.copyWith(color: Colors.white),
                   ),
                 ),
                 SizedBox(
@@ -70,17 +72,19 @@ class HomePage extends StatelessWidget {
                           children: [
                             Image.asset(
                               category.image,
-                              width: 50,
+                              width: 30,
                             ),
                             Text(
                               category.name,
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 12),
                             )
                           ],
                         ),
                       );
                     },
-                    separatorBuilder: (context, index) => const SizedBox(width: 15),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 15),
                     itemCount: categories.length,
                   ),
                 )
@@ -89,9 +93,10 @@ class HomePage extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(top: 10),
-            constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height * 0.7),
+            constraints: BoxConstraints(
+                minHeight: MediaQuery.of(context).size.height * 0.7),
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: Color(0xff1e65ff),
               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
             ),
             child: Column(
@@ -103,12 +108,13 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Lease again",
-                        style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                        "Vistos hace poco",
+                        style: theme.textTheme.titleLarge
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       TextButton.icon(
                         onPressed: () {},
-                        icon: const Text("View all"),
+                        icon: const Text("Ver todos"),
                         label: const Icon(IconlyLight.arrowRight2, size: 20),
                       )
                     ],
@@ -126,7 +132,8 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ProductDetailsPage(product: product),
+                                builder: (context) =>
+                                    ProductDetailsPage(product: product),
                               ));
                         },
                         child: SizedBox(
@@ -140,7 +147,7 @@ class HomePage extends StatelessWidget {
                                 width: double.maxFinite,
                                 height: 130,
                                 decoration: BoxDecoration(
-                                  color: Colors.grey.shade100,
+                                  color: Color(0xff97c5ff),
                                   borderRadius: BorderRadius.circular(20),
                                   image: DecorationImage(
                                     image: AssetImage(product.image),
@@ -150,7 +157,8 @@ class HomePage extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       SizedBox(
                                         width: 30,
@@ -165,7 +173,9 @@ class HomePage extends StatelessWidget {
                                       const Row(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          Icon(IconlyBold.star, size: 16, color: Colors.deepOrange),
+                                          Icon(IconlyBold.star,
+                                              size: 16,
+                                              color: Color(0xffffb922)),
                                           SizedBox(width: 4),
                                           Text("4.9")
                                         ],
@@ -190,14 +200,10 @@ class HomePage extends StatelessWidget {
                                   children: [
                                     TextSpan(
                                       style: theme.textTheme.bodySmall
-                                          ?.copyWith(fontWeight: FontWeight.bold),
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.bold),
                                       text: "\$${product.price}0",
                                     ),
-                                    TextSpan(
-                                      style: theme.textTheme.bodySmall
-                                          ?.copyWith(color: Colors.grey.shade600),
-                                      text: " / hr",
-                                    )
                                   ],
                                 ),
                               )
@@ -208,7 +214,8 @@ class HomePage extends StatelessWidget {
                         ),
                       );
                     },
-                    separatorBuilder: (context, index) => const SizedBox(width: 15),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 15),
                     itemCount: products.length,
                   ),
                 ),
@@ -218,29 +225,30 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Available Now",
-                        style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                        "Ahora en venta",
+                        style: theme.textTheme.titleLarge
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 10),
                         padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
-                          color: theme.colorScheme.secondaryContainer.withOpacity(0.5),
+                          color: theme.colorScheme.secondaryContainer
+                              .withOpacity(0.5),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              width: 50,
+                              width: 95,
                               height: 50,
                               margin: const EdgeInsets.only(right: 15),
-                              padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white,
                               ),
-                              child: Image.asset("assets/drill.png"),
+                              child: Image.asset("assets/header.jpg"),
                             ),
                             Flexible(
                               child: Column(
@@ -249,24 +257,26 @@ class HomePage extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(bottom: 4),
                                     child: Text(
-                                      "Craftsman Cordless Drill",
+                                      "Dragon's dogma II",
                                       style: theme.textTheme.titleMedium
-                                          ?.copyWith(fontWeight: FontWeight.bold),
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   Row(
                                     children: [
-                                      const Icon(IconlyBold.location, size: 16),
-                                      const Text("4.0km"),
                                       const Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                        child: Text("\$5.00 /hr"),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: Text("\$49.99"),
                                       ),
                                       Icon(IconlyBold.star,
-                                          size: 16, color: theme.colorScheme.primary),
+                                          size: 16,
+                                          color: theme.colorScheme.error),
                                       Text(
-                                        "4.9",
-                                        style: TextStyle(color: theme.colorScheme.primary),
+                                        "3.9",
+                                        style: TextStyle(
+                                            color: theme.colorScheme.error),
                                       ),
                                     ],
                                   )

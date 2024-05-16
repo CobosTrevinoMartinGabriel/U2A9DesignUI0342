@@ -10,28 +10,28 @@ class Category {
 
 List<Category> categories = [
   Category(
-    name: "Sports",
-    image: "assets/screwdriver.png",
-    color: const Color(0xffc2f6bf),
+    name: "Juegos",
+    image: "assets/MM11.png",
+    color: const Color(0xfff2f6bf),
   ),
   Category(
-    name: "Electronics",
-    image: "assets/fridge.png",
-    color: const Color(0xffc8a0f1),
+    name: "Figuras",
+    image: "assets/X.png",
+    color: const Color(0xfff1d7a0),
   ),
   Category(
-    name: "Fitness",
-    image: "assets/fitness.png",
-    color: const Color(0xfff5c385),
+    name: "Ropa",
+    image: "assets/Ropita.png",
+    color: const Color(0xffffb960),
   ),
   Category(
-    name: "Tools",
-    image: "assets/screwdriver.png",
-    color: const Color(0xfff19baa),
+    name: "Discos",
+    image: "assets/sndtrck.jpeg",
+    color: const Color(0xffffbc29),
   ),
   Category(
-    name: "Tools",
-    image: "assets/screwdriver.png",
-    color: Colors.orange,
+    name: "Comics",
+    image: "assets/as.jpeg",
+    color: Color(0xffffaf35),
   ),
 ];
